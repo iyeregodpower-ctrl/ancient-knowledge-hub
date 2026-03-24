@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loading...</title>
+
+<meta name="description" content="Read this article on Ancient Knowledge Hub">
+
+<link rel="canonical" href="https://ancientknowledgehub.com/article.html">
+
+<!-- OPEN GRAPH -->
+<meta property="og:title" content="Article">
+<meta property="og:description" content="Explore ancient knowledge and mysteries">
+<meta property="og:image" content="https://ancientknowledgehub.com/images/preview.jpg">
+<meta property="og:type" content="article">
+
+<!-- TWITTER -->
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div id="header"></div>
+
+<section class="article-page">
+
+<div class="article-wrapper">
+
+<h1 id="article-title"></h1>
+<h2 class="seo-subtitle" id="article-subtitle"></h2>
+
+<p class="article-meta">Ancient Knowledge • <span id="article-views"></span> views</p>
+<div class="article-actions">
+
+  <button id="like-btn" class="like-btn">
+    👍 <span>Like</span>
+  </button>
+
+  <div class="like-info">
+    <span id="like-count">0</span>
+    <small>Likes</small>
+  </div>
+
+</div>
+
+<img id="article-image" class="article-image">
+
+<div id="article-video"></div>
+
+<p id="article-description" class="article-description"></p>
+
+<div id="article-content" class="article-content"></div>
+
+</div>
+
+</section>
+
+<div class="article-end-actions">
+
+  <p>Did you enjoy this article?</p>
+
+  <button id="like-btn-bottom">👍 Like this article</button>
+
+</div>
+
+<section class="comments-section">
+
+<h3 class="comments-title">Comments</h3>
+
+<div id="comments-container" class="comments-list"></div>
+
+<form id="comment-form" class="comment-form">
+
+    <input type="text" id="comment-name" placeholder="Your name" required>
+
+    <textarea id="comment-text" placeholder="Write a comment..." required></textarea>
+
+    <button type="submit">Post Comment</button>
+
+</form>
+
+</section>
+
+<div id="footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/database.js"></script>
+<script src="js/load-components.js"></script>
+<script src="js/loadArticle.js"></script>
+<script src="js/likes.js"></script>
+<script src="js/comments.js"></script>
+
+</body>
+</html>

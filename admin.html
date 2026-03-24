@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* RESPONSIVE ADMIN */
+
+.admin-container{
+max-width:1000px;
+margin:60px auto;
+padding:20px;
+}
+
+.admin-form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+background:#1c1c24;
+padding:20px;
+border-radius:10px;
+}
+
+.admin-form textarea{
+grid-column:span 2;
+}
+
+.admin-form button{
+grid-column:span 2;
+padding:12px;
+background:#c9a227;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.admin-list{
+margin-top:30px;
+}
+
+.admin-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#1c1c24;
+padding:12px;
+border-radius:8px;
+margin-bottom:10px;
+flex-wrap:wrap;
+}
+
+.admin-actions{
+display:flex;
+gap:10px;
+}
+
+.admin-actions button{
+padding:6px 10px;
+border:none;
+border-radius:4px;
+cursor:pointer;
+}
+
+.delete-btn{
+background:red;
+color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.admin-form{
+grid-template-columns:1fr;
+}
+
+.admin-form textarea,
+.admin-form button{
+grid-column:span 1;
+}
+
+.admin-item{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<div class="admin-container">
+
+<h1>Admin Panel</h1>
+
+<form class="admin-form" id="article-form">
+
+<input type="text" id="title" placeholder="Title" required>
+<input type="text" id="slug" placeholder="Slug">
+
+<input type="text" id="thumbnail" placeholder="Thumbnail URL (optional)">
+<input type="file" id="imageUpload">
+
+<select id="category">
+<option value="watchers">Watchers</option>
+<option value="ancient-books">Ancient Books</option>
+<option value="african-mythology">African Mythology</option>
+<option value="mysteries">Mysteries</option>
+</select>
+
+<input type="text" id="youtube" placeholder="YouTube ID">
+
+<label>
+<input type="checkbox" id="featured"> Featured Article
+</label>
+
+<textarea id="description" placeholder="Short Description"></textarea>
+
+<textarea id="content" placeholder="Full HTML Content"></textarea>
+
+<button type="submit">Save Article</button>
+
+<button onclick="logout()" style="margin-bottom:20px;">
+Logout
+</button>
+
+</form>
+
+<div class="admin-list" id="admin-list"></div>
+
+</div>
+
+<div id="footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/database.js"></script>
+<script src="js/load-components.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>
