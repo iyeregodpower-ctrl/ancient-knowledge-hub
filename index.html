@@ -64,28 +64,24 @@
 
 </head>
 <body>
-  <div id="loader">
-
+  
   <!-- PARTICLES -->
+  <div id="loader">
   <div class="particles"></div>
 
   <div class="loader-inner">
-
-    <h1 class="loader-title">
-      Ancient Knowledge Hub
-    </h1>
-
-    <p class="loader-sub">
-      Unlocking Ancient Secrets...
-    </p>
+    <h1 class="loader-title">Ancient Knowledge Hub</h1>
+    <p class="loader-sub">Unlocking Ancient Secrets...</p>
 
     <div class="loader-bar">
       <div class="loader-progress"></div>
     </div>
-
   </div>
-
 </div>
+
+<!-- MENU OVERLAY -->
+<div id="menu-overlay"></div>
+
 <!-- ===== Navbar ===== -->
 <div id="header"></div>
 
@@ -273,36 +269,69 @@ Handpicked important discoveries and deep knowledge.
 <script src="js/comments.js"></script>
 
 <script>
-window.addEventListener("load", () => {
+// ===== LOADER FIX =====
+document.body.classList.add("loading");
 
+window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
 
   setTimeout(() => {
-
-    loader.classList.add("loader-hide");
+    loader.style.opacity = "0";
+    document.body.classList.remove("loading");
 
     setTimeout(() => {
       loader.style.display = "none";
-    }, 600);
-
-  }, 2200); // sync with animation
+    }, 500);
+  }, 2000);
 });
-</script>
 
-<script>
-// CREATE PARTICLES
+
+// ===== MOBILE MENU =====
+const menuBtn = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav-links");
+const overlay = document.getElementById("menu-overlay");
+
+menuBtn.addEventListener("click", () => {
+  nav.classList.toggle("active");
+  overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", () => {
+  nav.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+
+// ===== NAVBAR SCROLL BEHAVIOR =====
+let lastScroll = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    header.classList.add("hide");
+  } else {
+    header.classList.remove("hide");
+  }
+
+  lastScroll = currentScroll;
+});
+
+
+// ===== PARTICLES =====
 const particleContainer = document.querySelector(".particles");
 
-for (let i = 0; i < 40; i++) {
-  const particle = document.createElement("span");
-
-  particle.style.left = Math.random() * 100 + "%";
-  particle.style.animationDuration = (3 + Math.random() * 5) + "s";
-  particle.style.opacity = Math.random();
-
-  particleContainer.appendChild(particle);
+if (particleContainer) {
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement("span");
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = (3 + Math.random() * 5) + "s";
+    particleContainer.appendChild(p);
+  }
 }
 </script>
+
 
 </body>
 
