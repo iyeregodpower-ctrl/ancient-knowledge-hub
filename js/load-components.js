@@ -6,8 +6,8 @@ async function loadComponents(){
 
     // LOAD HEADER & FOOTER
     const [headerHTML, footerHTML] = await Promise.all([
-      fetch("/components/header.html").then(res => res.text()),
-      fetch("/components/footer.html").then(res => res.text())
+      fetch("components/header.html").then(res => res.text()),
+      fetch("components/footer.html").then(res => res.text())
     ])
 
     // INSERT HEADER
