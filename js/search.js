@@ -49,7 +49,7 @@ function initSearch(){
       `
 
       div.onclick = () => {
-        window.location.href = `/article.html?slug=${article.slug}`
+        window.location.href = `article.html?slug=${article.slug}`
       }
 
       dropdown.appendChild(div)
@@ -69,7 +69,7 @@ function initSearch(){
 
       saveSearch(query)
 
-      window.location.href = `/search.html?q=${encodeURIComponent(query)}`
+      window.location.href = `search.html?q=${encodeURIComponent(query)}`
     }
   })
 
@@ -106,7 +106,7 @@ function initSearch(){
       div.innerText = item
 
       div.onclick = () => {
-        window.location.href = `/search.html?q=${encodeURIComponent(item)}`
+        window.location.href = `search.html?q=${encodeURIComponent(item)}`
       }
 
       dropdown.appendChild(div)

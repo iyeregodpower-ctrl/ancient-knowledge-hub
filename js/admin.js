@@ -8,7 +8,7 @@ async function checkAuth(){
 const { data } = await db.auth.getUser()
 
 if(!data.user){
-window.location.href = "/login.html"
+window.location.href = "login.html"
 return
 }
 
@@ -16,7 +16,7 @@ const allowedEmail = "mythsandmysteries2000@gmail.com"
 
 if(data.user.email !== allowedEmail){
 alert("Access denied")
-window.location.href = "/index.html"
+window.location.href = "index.html"
 return
 }
 

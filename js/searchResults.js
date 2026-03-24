@@ -83,7 +83,7 @@ function highlight(text, keyword){
             ${article.description || "Explore this article"}
           </p>
 
-          <a href="/article.html?slug=${article.slug}" class="search-btn">
+          <a href="article.html?slug=${article.slug}" class="search-btn">
             Read Article →
           </a>
 

@@ -36,7 +36,7 @@ container.innerHTML += `
 
 <p>${article.description || ""}</p>
 
-<a href="/article.html?slug=${article.slug}" class="read-btn">
+<a href="article.html?slug=${article.slug}" class="read-btn">
 Read More
 </a>
 

@@ -43,7 +43,7 @@ async function loadBlog(page = 1){
 
           <p>${article.description || "Explore this article"}</p>
 
-          <a href="/article.html?slug=${article.slug}">
+          <a href="article.html?slug=${article.slug}">
             Read More →
           </a>
         </div>
