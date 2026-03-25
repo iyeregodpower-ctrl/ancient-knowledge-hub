@@ -57,18 +57,33 @@ async function loadComponents(){
     // 🔥 ACTIVE NAV LINK FIX
     // ==========================
 
-    const links = document.querySelectorAll(".nav-links a")
-    const current = window.location.pathname
+setTimeout(() => {
 
-    links.forEach(link => {
+  const links = document.querySelectorAll(".nav-links a");
 
-      const href = link.getAttribute("href")
+  const currentPath = window.location.pathname;
+  const currentParams = window.location.search;
 
-      if(href && current.includes(href.replace("/", ""))){
-        link.classList.add("active")
-      }
+  links.forEach(link => {
 
-    })
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    const [linkPath, linkQuery] = href.split("?");
+
+    // NORMAL PAGE
+    if (!linkQuery && currentPath.endsWith(linkPath)) {
+      link.classList.add("active");
+    }
+
+    // CATEGORY PAGE
+    if (linkQuery && currentPath.endsWith(linkPath) && currentParams.includes(linkQuery)) {
+      link.classList.add("active");
+    }
+
+  });
+
+}, 300); // wait for header to render
 
   }catch(error){
     console.log("Component load error:", error)
@@ -113,6 +128,29 @@ window.addEventListener("scroll", () => {
 
 });
 
+// 🔥 AUTO CLOSE MENU ON SCROLL
+
+window.addEventListener("scroll", () => {
+
+  const nav = document.querySelector(".nav-links");
+
+  if (nav && nav.classList.contains("active")) {
+    nav.classList.remove("active");
+  }
+
+});
+
+// 🔥 AUTO CLOSE MENU ON SCROLL
+
+window.addEventListener("scroll", () => {
+
+  const nav = document.querySelector(".nav-links");
+
+  if (nav && nav.classList.contains("active")) {
+    nav.classList.remove("active");
+  }
+
+});
 // ===== FINAL COOKIE SYSTEM (FIXED) =====
 
 function handleCookies(){
@@ -160,3 +198,33 @@ function handleCookies(){
 
 // 🔥 IMPORTANT: WAIT FOR FOOTER TO LOAD FIRST
 setTimeout(handleCookies, 800);
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const links = document.querySelectorAll(".nav-links a");
+
+  const currentPath = window.location.pathname;
+  const currentParams = window.location.search;
+
+  links.forEach(link => {
+
+    const href = link.getAttribute("href");
+
+    if (!href) return;
+
+    // SPLIT link into path + query
+    const [linkPath, linkQuery] = href.split("?");
+
+    // CASE 1: NORMAL PAGE (index.html, blog.html)
+    if (!linkQuery && currentPath.endsWith(linkPath)) {
+      link.classList.add("active");
+    }
+
+    // CASE 2: CATEGORY PAGE (VERY IMPORTANT)
+    if (linkQuery && currentPath.endsWith(linkPath) && currentParams.includes(linkQuery)) {
+      link.classList.add("active");
+    }
+
+  });
+
+});

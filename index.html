@@ -66,7 +66,7 @@
 <body>
   
   <!-- PARTICLES -->
-  <div id="loader">
+  <div id="loader"> 
   <div class="particles"></div>
 
   <div class="loader-inner">
@@ -286,36 +286,46 @@ window.addEventListener("load", () => {
 });
 
 
-// ===== MOBILE MENU =====
-const menuBtn = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav-links");
-const overlay = document.getElementById("menu-overlay");
+// ===== WAIT FOR HEADER TO LOAD =====
+document.addEventListener("DOMContentLoaded", () => {
 
-menuBtn.addEventListener("click", () => {
-  nav.classList.toggle("active");
-  overlay.classList.toggle("active");
-});
+  setTimeout(() => {
 
-overlay.addEventListener("click", () => {
-  nav.classList.remove("active");
-  overlay.classList.remove("active");
-});
+    // const menuBtn = document.querySelector(".menu-toggle");
+    // const nav = document.querySelector(".nav-links");
+    // const overlay = document.getElementById("menu-overlay");
+    // const header = document.querySelector(".main-header");
 
+    // if (!menuBtn || !nav) return; // safety check
 
-// ===== NAVBAR SCROLL BEHAVIOR =====
-let lastScroll = 0;
-const header = document.querySelector("header");
+    // ===== MOBILE MENU =====
+    menuBtn.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      overlay.classList.toggle("active");
+    });
 
-window.addEventListener("scroll", () => {
-  let currentScroll = window.pageYOffset;
+    overlay.addEventListener("click", () => {
+      nav.classList.remove("active");
+      overlay.classList.remove("active");
+    });
 
-  if (currentScroll > lastScroll && currentScroll > 100) {
-    header.classList.add("hide");
-  } else {
-    header.classList.remove("hide");
-  }
+    // ===== NAVBAR SCROLL =====
+    let lastScroll = 0;
 
-  lastScroll = currentScroll;
+    window.addEventListener("scroll", () => {
+      let currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.classList.add("hide");
+      } else {
+        header.classList.remove("hide");
+      }
+
+      lastScroll = currentScroll;
+    });
+
+  }, 300); // wait for header.html to load
+
 });
 
 
